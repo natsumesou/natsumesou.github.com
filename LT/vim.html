@@ -9,7 +9,7 @@
     
     <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
     <meta name="author" content="Bartek Szopka" />
-    <link href="assets/impress-demo.css" rel="stylesheet" />
+    <link href="assets/impress.css" rel="stylesheet" />
 </head>
 
 
@@ -20,11 +20,60 @@
 </div>
 
 <div id="impress">
-    <div id="test" class="step slide" data-x="-1000" data-y="-1500">
-        test
+    <div id="title" class="step" data-x="0">
+        <h1>私とvim&nbsp;#0</h1>
     </div>
-    <div id="test1" class="step slide">
-        test1
+    <div class="step" data-x="1300">
+        <p>へー、君vimmerなんだ？で、君の作ったvim pluginどれ？</p>
+    </div>
+    <div class="step" data-x="2600">
+        <img src="http://tiqav.com/eo.jpg">
+    </div>
+    <div class="step" data-x="3900" data-y="1300" data-scale="4">
+        <p>3つの状態</p>
+        <ul>
+            <li>ノーマルモード</li>
+            <li>インサートモード</li>
+            <li>ビジュアルモード</li>
+        </ul>
+        <p>基本です。</p>
+    </div>
+    <div class="step" data-x="3900" data-y="3900" data-scale="3" data-rotate="30">
+        <p>デフォルトで多くのショートカット</p>
+        <pre>$ vimtutor</pre>
+        <p>.vimrcに様々な設定を書くことで自分好みのvimにカスタマイズ！</p>
+        <pre>vim -u NONE</pre>
+        <p>で素のvimを起動。</p>
+    </div>
+    <div class="step" data-x="3900" data-y="4300" data-scale="0.2" data-rotate="60">
+        <p>基本的なショートカット</p>
+        <ul>
+            <li>hjkl ←↑↓→への移動</li>
+            <li>dd 行のカット</li>
+            <li>yy コピー</li>
+            <li>p ペースト</li>
+        </ul>
+        などなど、詳しくは:help
+    </div>
+    <div class="step" data-x="1300" data-y="5600" data-scale="3" data-rotate="90">
+        <p>ちょっとデキるvimの使い方</p>
+        <ul>
+            <li>ビジュアルモードを使いこなす</li>
+            <li>テキストオブジェクトの利用</li>
+            <li>プラグインでvimのカスタマイズ</li>
+            <li>vim script</li>
+        </ul>
+    </div>
+    <div class="step" data-x="-500" data-y="4300" data-scale="1.5" data-rotate="120">
+        <p>vimpusher <a href="http://www.vimpusher.com/" target="_blank">http://www.vimpusher.com/</a></p>
+        <p><a href="http://www.vimpusher.com/natsumesou" target="_blank">natsumesou's page</a></p>
+    </div>
+    <div class="step" data-x="-1000" data-y="1800" data-scale="4" data-rotate="150">
+        最後に宣伝
+        <p><a href="http://niconicogakkai.jp/nng2/#node-75" target="_blank">ニコニコ学会8th session 佐藤哲也</a></p>
+        <p><a href="http://nicores.herokuapp.com/entry/13" target="_blank">研究してみたマッドネス #13 「レス画像検索No.1／画像会話なら ちくわぶ 」</a></p>
+    </div>
+    <div id="overview" class="step" data-x="3000" data-y="3000" data-scale="10">
     </div>
 </div>
 
