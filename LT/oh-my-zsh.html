@@ -1,0 +1,105 @@
+<!doctype html>
+
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title></title>
+    <link href="assets/impress.css" rel="stylesheet" />
+</head>
+
+
+<body class="impress-not-supported">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    A<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+    <div id="title" class="step" data-x="0">
+        <h1>oh-my-zshのススメ</h1>
+    </div>
+    <div class="step" data-x="1300">
+        みなさんはbash派ですか？zsh派ですか？
+    </div>
+    <div class="step" data-x="2600">
+        自分はzsh派です
+    </div>
+    <div class="step" data-x="3900">
+        毎日触れる開発環境、メンテナンスできていますか？<br>
+        zshのイケてる設定知りたいですよね？
+    </div>
+    <div class="step" data-x="5200">
+        <h1>そこで oh-my-zsh の出番です！！</h1>
+    </div>
+    <div class="step" data-x="0" data-y="700">
+        豊富なプロンプトのテーマ(100以上!!)
+        <img src="https://a248.e.akamai.net/camo.github.com/db71146b02531fb14da9290d658eb029bb3b8ce4/687474703a2f2f696d673537312e696d616765736861636b2e75732f696d673537312f343935312f6f686d797a736863616e64792e706e67">
+        <img src="https://a248.e.akamai.net/camo.github.com/97f24b7ff6670393f4414d81532e1431ef4fbe7c/687474703a2f2f662e636c2e6c792f6974656d732f31346635383037653838373131323264396665302f636c6f75642e706e67">
+        <img src="https://a248.e.akamai.net/camo.github.com/468926301e7fa2ff208a3930ac5e91f370eb4efe/687474703a2f2f692e696d6775722e636f6d2f47545a58342e706e67">
+        <small>* お洒落に気を取られすぎてプロンプトが重くなってしまうテーマもあるので注意</small>
+    </div>
+    <div class="step" data-x="1300" data-y="700">
+        <h2>豊富なプラグイン</h2>
+        便利なaliasや関数たち
+        <ul>
+            <li>git</li>
+            <li>svn</li>
+            <li>osx</li>
+            <li>bundler</li>
+            <li>github</li>
+        </ul>
+        など
+    </div>
+    <div class="step" data-x="2600" data-y="700">
+        週に一回自動でアップデートをしてくれる！（詳細は後で）
+    </div>
+    <div class="step" data-x="3900" data-y="700">
+        導入方法
+        <pre style="font-size: .5em;">curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh</pre>
+    </div>
+    <div class="step" data-x="5200" data-y="700">
+        ディレクトリ構成(重要なところだけ)
+        <pre style="font-size: .7em;">
+        ~/.zshrc       -> oh-my-zsh用の.zshrc テーマやプラグインの設定
+        ~/.oh-my-zsh
+            |-custom       -> 個々の.zshrcを *.zsh としておいておけば
+                                        最後に読みこんでくれる
+            |-lib          -> oh-my-zshの基本的な設定
+            |-plugins      -> プラグイン
+            |-themes       -> プロンプトのテーマ
+        </pre>
+    </div>
+    <div class="step" data-x="0" data-y="1400">
+        <h2>テーマのカスタマイズ</h2>
+        ~/.zshrc で
+        <pre>ZSH_THEME="mrtazz"</pre>
+        のように自分の好みのテーマファイル名を入力するだけで素敵なプロンプトの完成<br>
+        イカしたテーマだけでなく実用的なプロンプトで開発効率アップ！
+    </div>
+    <div class="step" data-x="1300" data-y="1400">
+        <h2>プラグインのカスタマイズ</h2>
+        ~/.zshrc で
+        <pre>plugins=(git github osx svn)</pre>
+        のように取り込みたいプラグインを列挙するだけ！
+    </div>
+    <div class="step" data-x="2600" data-y="1400">
+        <h2>自動アップデート</h2>
+        一週間ごとにgithubでmasterに取り込まれた変更を自動で更新してくれる！(git pull origin master するだけ)
+    </div>
+    <div class="step" data-x="3900" data-y="1400">
+        <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>はgithubで開発中(watched:5680 , forked: 2138 [2012/6/13現在])<br>
+        みんなも是非pull requestを送って便利な機能を取り込んでもらおう！<br>
+        <small>でもpull requestが取り込まれるのに結構時間かかる</small>
+    </div>
+    <div class="step" data-x="5200" data-y="1400">
+        <h1>ENJOY HACKING LIFE WITH YOUR SWEET ZSH ENV.</h1>
+    </div>
+</div>
+
+<script src="assets/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
