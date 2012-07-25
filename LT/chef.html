@@ -1,0 +1,97 @@
+<!doctype html>
+
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title></title>
+    <link href="assets/impress.css" rel="stylesheet" />
+</head>
+
+
+<body class="impress-not-supported">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    A<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+    <div id="title" class="step" data-x="0">
+        <h1>Chefで環境構築</h1>
+    </div>
+    <div class="step" data-x="1300">
+    </div>
+</div>
+
+<script src="assets/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
+
+<!--
+chefで環境構築
+
+Chefのアーキテクチャ
+http://wiki.opscode.com/download/attachments/7274878/chef-server-arch.png?version=1&modificationDate=1281654652000
+    Chef Server: Web UI, nodes, clientsへAPIを提供している
+    Chef Client(Node): Chefで管理されているサーバ
+    Knife: Chefを操作するクライアントのCUIツール
+    Chef Server Web UI: Chef Serverのコンソールを管理するWebインタフェース
+
+    CouchDB: Chef Serverが使ってるデータベース
+    RabbitMQ: Solrのインデックスを貼るためのメッセージキュー
+    Chef Solr Indexer: 検索性を高めるためのライブラリ
+    Chef Solr: 全文検索のSolrを軽くラップしたもの
+
+今回はChef Solo
+clientとNodeが同一サーバで簡潔！Chef Serverいらずで便利
+
+
+ChefのUML
+http://wiki.opscode.com/download/attachments/16089244/ChefConcepts.png?version=3&modificationDate=1321650211000
+
+重要なのは
+cookbook 自動化したいリソースをcookbookという単位で管理する
+ - recipe リソースの作り方を実際に書く
+role 役割ごとに実行するcookbookの一覧やそのcookbookのバージョン、attributesなどを指定できる。
+node Chefでビルドするサーバの単位
+
+cookbookはopscodeがホスティングしているものがある http://community.opscode.com/
+最初から作るよりもこれをベースにしたほうがいい
+
+
+cookbookの例を紹介
+roleの例を紹介
+
+Chef Serverが有るとnodesを一括管理できて非常に便利！
+
+おわり
+
+
+
+
+
+noren-local
+{
+    "name": "noren-local",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "description": "noren local env.",
+    "run_list": [
+        "recipe[ruby]",
+        "recipe[apache2::noren_with_dms]",
+        "recipe[passenger]",
+        //"recipe[php]",
+        //"recipe[mysql]",
+        //"recipe[dms]",
+        "recipe[mongodb]",
+        "recipe[memcached::multi-register]",
+        "recipe[libxslt]",
+        "recipe[noren]"
+    ]
+}
+
+
+-->
