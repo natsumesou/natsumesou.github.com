@@ -18,9 +18,110 @@
 
 <div id="impress">
     <div id="title" class="step" data-x="0">
-        <h1>Chefで環境構築</h1>
+        <h1>Chefで全自動環境構築機</h1>
+        <img src=http://i2.ytimg.com/vi/FTCX9y1PInM/0.jpg">
     </div>
     <div class="step" data-x="1300">
+        <h2>Chefのアーキテクチャ</h2>
+        <img src="http://wiki.opscode.com/download/attachments/7274878/chef-server-arch.png?version=1&modificationDate=1281654652000">
+    </div>
+    <div class="step" data-x="3900">
+        <ul>
+            <li>Chef Server - Web UI, nodes, clientsへAPIを提供している</li>
+            <li>Chef Client(Node) - Chefで管理されているサーバ</li>
+            <li>Knife - Chefを操作するクライアントのCUIツール</li>
+            <li>Chef Server Web UI - Chef Serverのコンソールを管理するWebインタフェース</li>
+            <!--
+            <li>CouchDB: Chef Serverが使ってるデータベース</li>
+            <li>RabbitMQ: Solrのインデックスを貼るためのメッセージキュー</li>
+            <li>Chef Solr Indexer: 検索性を高めるためのライブラリ</li>
+            <li>Chef Solr: 全文検索のSolrを軽くラップしたもの</li>
+            -->
+        </ul>
+    </div>
+    <div class="step" data-x="5200">
+        <h2>ChefのUML</h2>
+        <img src="http://wiki.opscode.com/download/attachments/16089244/ChefConcepts.png?version=3&modificationDate=1321650211000">
+    </div>
+    <div class="step" data-x="7800">
+        <ul>
+            <li>cookbook - 自動化したいリソースをcookbookという単位で管理する</li>
+            <li>recipe - リソースの作り方を実際に書く</li>
+            <li>role - 役割ごとに実行するcookbookの一覧やそのcookbookのバージョン、attributesなどを指定できる。</li>
+            <li>node - Chefでビルドするサーバの単位</li>
+        </ul>
+    </div>
+    <div class="step" data-x="9100">
+        <h2>cookbookやrecipeの構成</h2>
+    </div>
+    <div class="step" data-x="10400">
+        Knifeコマンド
+        <pre>knife cookbook create COOKBOOK</pre>
+        ↓
+        <pre>
+        attributes/
+        definitions/
+        files/
+        libraries/
+        metadata.rb
+        providers/
+        README.rdoc
+        recipes/
+        resources/
+        templates/</pre>
+    </div>
+    <div class="step" data-x="11700">
+        <ul style="font-size:.8em">
+        <li>Attributes - デフォルト値の設定</li>
+        <li>Definitions - 歳利用可能なコレクションを作成する</li>
+        <li>File - cookbookに必要なリソースを置いておくことが可能</li>
+        <li>Libraries - Chefのヘルパーの作成が可能</li>
+        <li>Metadata - 依存関係やバージョンなどをChefで管理するためのメタデータ</li>
+        <li>Providers - リソースの状態管理を行うactionの実装</li>
+        <li>Recipes - 目的のリソースを作成するためのレシピ</li>
+        <li>Resources - リソースのモデルを定義する</li>
+        <li>Templates - 動的に生成可能なERBのテンプレート</li>
+        </ul>
+    </div>
+    <div class="step" data-x="13000">
+        <p>
+        cookbookはopscodeがホスティングしているものがある
+        <a href="http://community.opscode.com/">http://community.opscode.com/</a>
+        </p>
+        最初から作るよりもこれをベースにしたほうがいい
+        <pre>knife cookbook site install apache2</pre>
+    </div>
+    <div class="step" data-x="14300">
+        <h2>apache2</h2>
+        <a href="https://github.com/opscode-cookbooks/apache2">https://github.com/opscode-cookbooks/apache2</a>
+    </div>
+    <div class="step" data-x="15600">
+        <h2>role</h2>
+        run_listで必要なcookbookを指定でき、roleごとにattributesの定義やoverrideが可能。
+        <pre style="font-size:.6em">
+{
+    "name": "noren-local",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "description": "noren local env.",
+    "run_list": [
+        "recipe[ruby]",
+        "recipe[apache2::noren]",
+        "recipe[passenger]",
+        "recipe[mongodb]",
+        "recipe[memcached::multi-register]",
+        "recipe[libxslt]",
+        "recipe[noren]"
+    ]
+}</pre>
+    </div>
+    <div class="step" data-x="16900">
+        <p>
+        Chef Solo - サーバを用意しないでクライアントのみで完結
+        Chef Server - 各ノードをServerで一括管理出来る
+        </p>
+        <br>
+        <h1>みんなもChefでfu.kな環境構築を自動化しよう！</h1>
     </div>
 </div>
 
@@ -29,69 +130,3 @@
 
 </body>
 </html>
-
-<!--
-chefで環境構築
-
-Chefのアーキテクチャ
-http://wiki.opscode.com/download/attachments/7274878/chef-server-arch.png?version=1&modificationDate=1281654652000
-    Chef Server: Web UI, nodes, clientsへAPIを提供している
-    Chef Client(Node): Chefで管理されているサーバ
-    Knife: Chefを操作するクライアントのCUIツール
-    Chef Server Web UI: Chef Serverのコンソールを管理するWebインタフェース
-
-    CouchDB: Chef Serverが使ってるデータベース
-    RabbitMQ: Solrのインデックスを貼るためのメッセージキュー
-    Chef Solr Indexer: 検索性を高めるためのライブラリ
-    Chef Solr: 全文検索のSolrを軽くラップしたもの
-
-今回はChef Solo
-clientとNodeが同一サーバで簡潔！Chef Serverいらずで便利
-
-
-ChefのUML
-http://wiki.opscode.com/download/attachments/16089244/ChefConcepts.png?version=3&modificationDate=1321650211000
-
-重要なのは
-cookbook 自動化したいリソースをcookbookという単位で管理する
- - recipe リソースの作り方を実際に書く
-role 役割ごとに実行するcookbookの一覧やそのcookbookのバージョン、attributesなどを指定できる。
-node Chefでビルドするサーバの単位
-
-cookbookはopscodeがホスティングしているものがある http://community.opscode.com/
-最初から作るよりもこれをベースにしたほうがいい
-
-
-cookbookの例を紹介
-roleの例を紹介
-
-Chef Serverが有るとnodesを一括管理できて非常に便利！
-
-おわり
-
-
-
-
-
-noren-local
-{
-    "name": "noren-local",
-    "chef_type": "role",
-    "json_class": "Chef::Role",
-    "description": "noren local env.",
-    "run_list": [
-        "recipe[ruby]",
-        "recipe[apache2::noren_with_dms]",
-        "recipe[passenger]",
-        //"recipe[php]",
-        //"recipe[mysql]",
-        //"recipe[dms]",
-        "recipe[mongodb]",
-        "recipe[memcached::multi-register]",
-        "recipe[libxslt]",
-        "recipe[noren]"
-    ]
-}
-
-
--->
