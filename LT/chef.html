@@ -43,7 +43,7 @@
         <img src="http://wiki.opscode.com/download/attachments/16089244/ChefConcepts.png?version=3&modificationDate=1321650211000" width="130%">
     </div>
     <div class="step" data-x="7800">
-        <ul>
+        <ul style="font-size:.9em;">
             <li>cookbook - 自動化したいリソースをcookbookという単位で管理する</li>
             <li>recipe - リソースの作り方を実際に書く</li>
             <li>role - 役割ごとに実行するcookbookの一覧やそのcookbookのバージョン、attributesなどを指定できる。</li>
@@ -57,7 +57,7 @@
         Knifeコマンド
         <pre>knife cookbook create COOKBOOK</pre>
         ↓
-        <pre>
+        <pre style="font-size:.6em;">
         attributes/
         definitions/
         files/
@@ -70,7 +70,7 @@
         templates/</pre>
     </div>
     <div class="step" data-x="11700">
-        <ul style="font-size:.8em">
+        <ul style="font-size:.7em">
         <li>Attributes - デフォルト値の設定</li>
         <li>Definitions - 歳利用可能なコレクションを作成する</li>
         <li>File - cookbookに必要なリソースを置いておくことが可能</li>
@@ -95,9 +95,9 @@
         <a href="https://github.com/opscode-cookbooks/apache2">https://github.com/opscode-cookbooks/apache2</a>
     </div>
     <div class="step" data-x="15600">
-        <h2>role</h2>
-        run_listで必要なcookbookを指定でき、roleごとにattributesの定義やoverrideが可能。
-        <pre style="font-size:.6em">
+        role
+        <p>run_listで必要なcookbookを指定でき、roleごとにattributesの定義やoverrideが可能。</p>
+        <pre style="font-size:.4em">
 {
     "name": "noren-local",
     "chef_type": "role",
