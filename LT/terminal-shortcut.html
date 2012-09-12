@@ -1,0 +1,108 @@
+<!doctype html>
+
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title></title>
+    <link href="assets/impress.css" rel="stylesheet" />
+</head>
+
+
+<body class="impress-not-supported">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    A<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+    <div id="title" class="step" data-x="0">
+        <h1>サクサク<br>ターミナル生活</h1>
+    </div>
+    <div class="step" data-x="1300">
+        みなさんは一日どれだけターミナルの画面に触れていますか？
+    </div>
+    <div class="step" data-x="2600">
+        ファイル操作・Git・cap deploy・ssh etc...<br>
+        いろんな操作をターミナルを介して行なっています
+    </div>
+    <div class="step" data-x="3900">
+        そんなターミナルをちゃんと使いこなせていますか？
+        <pre>
+m<span style="color:red;">b</span> ~/hoge ~/fuba/hoge
+git checkout <span style="color:red;">miss</span> origin/dev1 dev1</pre>
+        先頭文字のタイポしたり<br>
+        途中にいらない文字を入れてしまったり...
+    </div>
+    <div class="step" data-x="5200">
+        ターミナルでの操作で便利なキーボードショートカットを利用しよう！
+    </div>
+    <div class="step" data-x="6500">
+        ターミナルの2種類のキーバインド
+        <ul>
+        <li>端末のキーバインド(stty)</li>
+        <li>shellのキーバインド(bash/zsh)</li>
+        </ul>
+    </div>
+    <div class="step" data-x="7800">
+        端末のキーバインド
+        <pre>stty -a</pre>
+        <pre>
+cchars: discard = ^O; dsusp = ^Y; eof = ^D; eol = <undef>;
+eol2 = <undef>; erase = ^?; intr = ^C; kill = ^U; lnext = ^V;
+min = 1; quit = ^\; reprint = ^R; start = ^Q; status = ^T;
+stop = ^S; susp = ^Z; time = 0; werase = ^W;</pre>
+    </div>
+    <div class="step" data-x="9100">
+        <ul>
+        <li>intr = ^C; プロセス終了の割り込みシグナルを送る</li>
+        <li>werase = ^W; 直前の単語を削除</li>
+        </ul>
+        など
+        詳しくは
+        <pre>man stty</pre>
+    </div>
+    <div class="step" data-x="10400">
+        shellのキーバインド(zsh)
+        bashもzshも基本的にemacsのキーバインドが適用されている
+        <pre>bash$  bind -p</pre>
+        <pre>zsh$  bindkey</pre>
+        <pre>
+"^A" beginning-of-line
+"^B" backward-char
+"^D" delete-char-or-list
+...</pre>
+    </div>
+    <div class="step" data-x="11700">
+        <ul>
+        <li>^A 行頭に移動</li>
+        <li>^E 行末に移動</li>
+        <li>^N 次の履歴を表示</li>
+        <li>^P 前の履歴を表示</li>
+        <li>^W 直前の一単語を削除</li>
+        <li>^L ターミナルをクリアする</li>
+        <li>^S 履歴の前方インクリメタルサーチ</li>
+        <li>^R 履歴の後方インクリメタルサーチ</li>
+        </ul>
+    </div>
+    <div class="step" data-x="13000">
+        これだけでもターミナル上での作業が楽に！<br>
+        emacsキーバインドだけでなくviのキーバインドも使える
+        <pre>bash$  set -o vi</pre>
+        <pre>zsh$  bindkey -v</pre>
+        <small>
+        一回やってみたら効率落ちたのでヤメました
+        やっぱターミナル上はemacsキーバインドのほうがイイ！
+        </small>
+    </div>
+    <div class="step" data-x="14300">
+        ターミナルの上を自由自在に走り回ろう！！！おわり
+    </div>
+</div>
+
+<script src="assets/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
