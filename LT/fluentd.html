@@ -1,0 +1,118 @@
+<!doctype html>
+
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title></title>
+    <link href="assets/impress.css" rel="stylesheet" />
+</head>
+
+<body class="impress-not-supported">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    A<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+    <div id="title" class="step">
+        <h1>Fluentdでのアプリケーションロギング入門</h1>
+    </div>
+    <div class="step">
+        <h1>ログ</h1>
+        <ul>
+            <li>エラーログ</li>
+            <li>アクセスログ</li>
+            <li>ユーザの行動ログ</li>
+        </ul>
+    </div>
+    <div class="step">
+        <ul>
+            <li>エラーログ -> サービスの実働自体に関わるから誰しも監視してる</li>
+            <li>アクセスログ -> Apacheのログには出力してるけどエラーが起きた時くらいしか見ない</li>
+            <li>ユーザの行動ログ -> 取りたいけど…いろいろ大変そう</li>
+        </ul>
+    </div>
+    <div class="step">
+        <img src="http://fluentd.org/images/logo.png" style="margin-left: 0;">
+        <h1>そこでFluentd！！</h1>
+        http://fluentd.org/
+    </div>
+    <div class="step">
+        <h1>Fluentdとは？</h1>
+        様々なログをJSONで収集し、好きな用途に加工しやすくするログ収集ツール。
+    </div>
+    <div class="step">
+        <h1>インストール</h1>
+        <pre>gem install fluentd</pre>
+    </div>
+    <div class="step">
+        <h2>設定</h2>
+        <pre style="font-size: .6em;">
+# HTTP経由
+&lt;source&gt;
+  type http
+  port 8888
+&lt;/source&gt;
+# logファイル経由
+&lt;source&gt;
+  type tail
+  path /va/log/apache/access_log.log
+  format apache
+  tag apache.access
+&lt;/source&gt;
+# 保存
+&lt;match apache.access&gt;
+  type file
+  path /var/log/fluent/apache_access
+&lt;/match&gt;
+        </pre>
+    </div>
+    <div class="step">
+        <h1>アーキテクチャ</h1>
+        <ol>
+            <li>Input - HTTP+JSON,File,Syslog…</li>
+            <li>Buffer - Memory,File</li>
+            <li>Output - File,MongoDB,MySQL…</li>
+        </ol>
+        <p>シンプル！</p>
+    </div>
+    <div class="step">
+        <p>アクセスログからレスポンスタイム・ステータスコードのグラフ化</p>
+        <ul>
+            <li>Fluentd</li>
+            <li>fluentd-plugin-datacounter</li>
+            <li>fluentd-plugin-growthforecast</li>
+            <li>GrowthForecast</li>
+        </ul>
+    </div>
+    <div class="step" style="text-align: center;">
+        <h1>デモ</h1>
+    </div>
+    <div class="step">
+        <p>
+        導入が簡単なアクセスログの解析からFluentdを利用！<br>
+        既存のサービスに手を入れる必要なし！<br>
+        最終的にユーザの行動ログをとれるようにしていきたい
+        </p>
+        <h1 style="text-align: center">終わり</h1>
+    </div>
+    <div class="step">
+    </div>
+</div>
+
+<script src="assets/jquery-1.8.2.min.js"></script>
+<script src="assets/impress.js"></script>
+<script type="text/javascript">
+    var pages = $("div.step");
+    var xLength = 1800;
+    var counter = 0;
+    $.each(pages, function(){
+            $(this).attr("data-x", xLength * counter++);
+            });
+</script>
+<script>impress().init();</script>
+
+</body>
+</html>
