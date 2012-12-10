@@ -1,0 +1,116 @@
+<!doctype html>
+
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title></title>
+    <link href="assets/impress.css" rel="stylesheet" />
+</head>
+
+<body class="impress-not-supported">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    A<p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+    <div id="title" class="step">
+        <h1>jQuery1.9と2.0のお話</h1>
+    </div>
+    <div class="step">
+        <h2>2013年前半 jQuery1.9 stable リリース予定</h2>
+        <h2>それを追って jQuery2.0 stable リリース予定</h2>
+        <p>2.0はIEサポートを絞るのみで後は1.9互換だそうな</p>
+    </div>
+    <div class="step">
+        <h1>じゃあjQuery1.9は何が変わるの？</h1>
+    </div>
+    <div class="step">
+        <ul>
+            <li>APIの掃除</li>
+            <li>プラグインの整理</li>
+            <li>全てのメジャーブラウザのユニットテストをサポート</li>
+        </ul>
+    </div>
+    <div class="step" style="text-align:center;">
+        <h1>？</h1>
+    </div>
+    <div class="step">
+        <h1>…jQuery2.0は？</h1>
+    </div>
+    <div class="step">
+        <ul>
+            <li>IE6, IE7のサポートをしない！</li>
+            <li>なんとIE8もサポートしません！！</li>
+            <li>シンプルに！シンプルに！よりシンプルに！</li>
+        </ul>
+    </div>
+    <div class="step" style="text-align:center;">
+        <h1>まとめると</h1>
+    </div>
+    <div class="step">
+        <ul>
+            <li>より速く</li>
+            <li>より小さく</li>
+            <li>古いIE互換により縛られていた設計の再構築を！</li>
+        </ul>
+    </div>
+    <div class="step" style="text-align:center;">
+        <h1>より速く</h1>
+    </div>
+    <div class="step">
+        <ul>
+            <li>:checkedなどのセレクタは消す</li>
+            <li>あれはjQueryの独自実装</li>
+            <li>NG $(this).is(":checked")</li>
+            <li>OK this.checked</li>
+        </ul>
+        <p>他にもW3CのCSSセレクタを使えばもっと高速になる</p>
+        <pre>ex) input[type=checkbox]</pre>
+    </div>
+    <div class="step" style="text-align:center;">
+        <h1>より小さく</h1>
+    </div>
+    <div class="step">
+        <ul>
+            <li>Pluginを整理する</li>
+            <li>要らないAPIを消す</li>
+            <li>IE6/IE7/IE8の互換を捨てる</li>
+        </ul>
+    </div>
+    <div class="step">
+        <h1>※注意 jQuery1.9で消える(？)予定のAPI</h1>
+    </div>
+    <div class="step">
+        <ul>
+            <li>:button selector</li>
+            <li>.die()</li>
+            <li>.error()</li>
+            <li>.size()</li>
+            <li>.toggle()</li>
+        </ul>
+        <h2 style="margin-top:1em;">deprecatedなAPIは消える可能性がある！！</h2>
+        <a href="http://api.jquery.com/category/deprecated/">http://api.jquery.com/category/deprecated/</a>
+    </div>
+    <div class="step">
+        <h1>jQuery Coreの方の発表スライドを読むとわかりやすい！</h1>
+        <p><a href="http://www.slideshare.net/dmethvin/jquery-features-to-avoid">http://www.slideshare.net/dmethvin/jquery-features-to-avoid</a></p>
+    </div>
+</div>
+
+<script src="assets/jquery-1.8.2.min.js"></script>
+<script src="assets/impress.js"></script>
+<script type="text/javascript">
+    var pages = $("div.step");
+    var xLength = 1800;
+    var counter = 0;
+    $.each(pages, function(){
+            $(this).attr("data-x", xLength * counter++);
+            });
+</script>
+<script>impress().init();</script>
+
+</body>
+</html>
